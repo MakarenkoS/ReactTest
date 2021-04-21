@@ -1,3 +1,4 @@
 export const initialState = {
-  isAuth: true
+  isAuth: true,
+  postData: []
 }
