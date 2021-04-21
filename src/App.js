@@ -1,25 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import 'materialize-css'
+import { useRoutes } from './Routes';
+import { Navbar } from './components/Navbar/Navbar';
+import { connect } from 'react-redux';
 
-function App() {
+let App = ({ isAuth }) => {
+  const routes = useRoutes(isAuth)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App container">
+
+      {isAuth && <Navbar />}
+      {routes}
+
     </div>
-  );
+  )
 }
 
-export default App;
+
+let mapStateToProps = state => {
+  return (
+    {
+      isAuth: state.isAuth
+    }
+  )
+}
+
+
+export default App = connect(mapStateToProps)(App)

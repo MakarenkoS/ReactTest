@@ -1,38 +1,29 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  /* label color */
+  .input-field label {
+    color: #fff;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .input-field
+  /* label focus color */
+  .input-field input[type=text]:focus + label {
+    color: #fefefe;
   }
-  to {
-    transform: rotate(360deg);
+
+  .input-field input[type=text] {
+    color: #c6c6c6;
+    border-bottom: 1px solid rgb(241, 226, 226);
+    box-shadow: 0 1px 0 0 rgb(202, 186, 186);
   }
-}
+  /* label underline focus color */
+  .input-field input[type=text]:focus {
+    color: #dedede;
+    border-bottom: 1px solid rgb(241, 226, 226);
+    box-shadow: 0 1px 0 0 rgb(202, 186, 186);
+  }
+
+  
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: rgb(168, 56, 56);
+  }
+       
