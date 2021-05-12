@@ -38,9 +38,7 @@ export const Paginator = (props) => {
   return (
     <ul className="pagination">
 
-      <li className={canPageLeft() === true ? "waves-effect" : "disabled"}
-
-      >
+      <li className={canPageLeft() === true ? "waves-effect" : "disabled"}>
         <a href="#!" onClick={onArrowClick}><i data-arrow="left" className="material-icons">chevron_left</i></a>
       </li>
 

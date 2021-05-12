@@ -11,7 +11,7 @@ export const JsonPageItem = ({id, title}) => {
         </span>
       </label>
       
-      <a className="waves-effect waves-light btn"><i className="material-icons left">cloud</i>button</a>
+      <button className="waves-effect waves-light btn"><i className="material-icons left">cloud</i>button</button>
     </p>
   )
 }

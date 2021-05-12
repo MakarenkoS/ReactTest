@@ -1,14 +1,18 @@
-import { NavLink } from 'react-router-dom'
 import React from 'react'
-import { logout } from '../../Redux/actions'
-import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 import classes from './Navbar.module.css'
+import { useDispatch } from 'react-redux'
+import { logout } from '../../Redux/actions'
 
 
 export let Navbar = (props) => {
+
+  const dispatch = useDispatch()
+
   function userLogout() {
-    props.logout()
+    dispatch(logout())
   }
+
   return (
     <nav>
       <div className="nav-wrapper blue darken-4 ">
@@ -22,11 +26,3 @@ export let Navbar = (props) => {
     </nav>
   )
 } 
-
-const mapStateToProps = (state) => {
-  return ( {
-    isAuth: state.isAuth
-  })
-  
-}
-Navbar = connect(mapStateToProps, {logout})(Navbar)

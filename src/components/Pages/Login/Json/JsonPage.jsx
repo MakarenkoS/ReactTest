@@ -1,28 +1,32 @@
 import React, { useEffect, useState } from 'react'
-import classes from './JsonPage.module.css'
-import { postApi } from '../../../../api/api'
+import { useDispatch, useSelector } from 'react-redux'
+import { getPosts } from '../../../../Redux/jsonPageReducer'
+import { Paginator } from './../../../common/Paginator'
 import { JsonPageItem } from './JsonPageItem'
-import {Paginator} from './../../../common/Paginator'
 
 
 
-export const JsonPage = () => {
+export const JsonPage = React.memo(() => {
 
-  const [posts, setPosts] = useState([{}])
+  const dispatch = useDispatch()
   const [currentPage, setCurrentPage] = useState(1)
  
-  const portionSize = 5
-  const portionCount = 18
-  
+ 
+  let posts = useSelector( state => state.jsonPage.posts)
+  const portionSize = useSelector( state => state.jsonPage.portionSize)
+  const portionCount = useSelector( state => state.jsonPage.portionCount)
+
 
   useEffect(() => {
-    async function fetchPosts() {
-      const data = await postApi.getPosts(portionCount)
-      setPosts(data)
-    }
-    fetchPosts()
-  }, [])
-  
+    dispatch(getPosts())
+  }, [dispatch])
+ 
+  if(posts.length === 0) {
+    return (
+      <div>Loading..</div>
+    )
+  }
+
   return (
     <div>
       <nav>
@@ -47,7 +51,6 @@ export const JsonPage = () => {
                  setCurrentPage = {setCurrentPage}
                  />
 
-
-    </div>
+     </div>
   )
-}
+})

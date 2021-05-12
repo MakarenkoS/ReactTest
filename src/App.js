@@ -2,28 +2,17 @@ import './App.css';
 import 'materialize-css'
 import { useRoutes } from './Routes';
 import { Navbar } from './components/Navbar/Navbar';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-let App = ({ isAuth }) => {
+export const App = () => {
+  const isAuth = useSelector(state => state.auth.isAuth)
   const routes = useRoutes(isAuth)
   return (
     <div className="App container">
 
-      {isAuth && <Navbar />}
+      {isAuth && <Navbar isAuth = {isAuth} />}
       {routes}
 
     </div>
   )
 }
-
-
-let mapStateToProps = state => {
-  return (
-    {
-      isAuth: state.isAuth
-    }
-  )
-}
-
-
-export default App = connect(mapStateToProps)(App)

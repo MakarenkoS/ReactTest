@@ -1,9 +1,14 @@
-import { createStore, compose, applyMiddleware } from "redux";
-import { mainReducer } from "./mainReducer";
-import { initialState } from "./initialState";
-import thunk from "redux-thunk"
+import { applyMiddleware, combineReducers, compose, createStore } from "redux";
+import thunk from "redux-thunk";
+import { authReducer } from "./authReducer";
+import { jsonPageReducer } from "./jsonPageReducer";
 
-export const store = createStore(mainReducer, initialState,
+const reducers = combineReducers({
+  auth: authReducer,
+  jsonPage: jsonPageReducer
+})
+
+export const store = createStore(reducers,
   compose(
     applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
