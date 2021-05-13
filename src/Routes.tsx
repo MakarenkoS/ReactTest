@@ -1,7 +1,11 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 import {LoginPage} from './components/Pages/Login/LoginPage'
 import { JsonPage } from './components/Pages/Login/Json/JsonPage';
-export const useRoutes = (isAuth ) => {
+import React from 'react';
+
+
+
+export const useRoutes = (isAuth: boolean ) => {
 
   if (isAuth) {
     return (

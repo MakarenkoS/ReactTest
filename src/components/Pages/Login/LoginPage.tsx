@@ -6,9 +6,14 @@ import { authorizeUser } from '../../../Redux/authReducer'
 
 export let LoginPage = () => {
 
+  type HTMLElementEvent<T extends HTMLElement> = Event & {
+    target: T;
+  }
+  
+
   const dispatch = useDispatch()
 
-  const changeHandler = e => {
+  const changeHandler = (e: HTMLElementEvent<HTMLButtonElement> & React.ChangeEvent<HTMLInputElement>)  => {
     setField({ ...field, [e.target.name]: e.target.value })
   }
 
@@ -18,6 +23,7 @@ export let LoginPage = () => {
   })
 
   useEffect(() => {
+    //@ts-ignore
     window.M.updateTextFields()
   }, [])
 

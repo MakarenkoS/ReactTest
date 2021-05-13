@@ -2,15 +2,18 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import classes from './Navbar.module.css'
 import { useDispatch } from 'react-redux'
-import { logout } from '../../Redux/actions'
+import { authActions } from '../../Redux/actions'
 
+type PropsType = {
+  isAuth: boolean
+} 
 
-export let Navbar = (props) => {
+export const Navbar:React.FC<PropsType> = () => {
 
   const dispatch = useDispatch()
 
   function userLogout() {
-    dispatch(logout())
+    dispatch(authActions.logout())
   }
 
   return (

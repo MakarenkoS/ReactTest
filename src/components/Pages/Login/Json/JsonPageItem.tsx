@@ -1,7 +1,12 @@
 import React from 'react'
 import classes from './JsonPage.module.css'
 
-export const JsonPageItem = ({id, title}) => {
+type PropsType = {
+  id: number
+  title: string
+}
+
+export const JsonPageItem: React.FC<PropsType> = ({id, title}) => {
   return (
     <p className={classes.item}>
       <label className={classes.checkbox}>

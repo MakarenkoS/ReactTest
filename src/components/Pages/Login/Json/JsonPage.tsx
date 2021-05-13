@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPosts } from '../../../../Redux/jsonPageReducer'
-import { Paginator } from './../../../common/Paginator'
+import { Paginator } from '../../../common/Paginator'
 import { JsonPageItem } from './JsonPageItem'
+import { AppStateType } from '../../../../Redux/store'
 
 
+type PropTypes = {}
 
-export const JsonPage = React.memo(() => {
+export const JsonPage: React.FC<PropTypes> = React.memo(() => {
 
   const dispatch = useDispatch()
   const [currentPage, setCurrentPage] = useState(1)
  
  
-  let posts = useSelector( state => state.jsonPage.posts)
-  const portionSize = useSelector( state => state.jsonPage.portionSize)
-  const portionCount = useSelector( state => state.jsonPage.portionCount)
+  let posts = useSelector( (state: AppStateType) => state.jsonPage.jsonArray)
+  const portionSize = useSelector( (state: AppStateType)  => state.jsonPage.portionSize)
+  const portionCount = useSelector( (state: AppStateType)  => state.jsonPage.portionCount)
 
 
   useEffect(() => {
