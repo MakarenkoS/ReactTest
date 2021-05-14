@@ -32,7 +32,6 @@ export const Paginator: React.FC<PropsType> = ({ portionCount, portionSize, curr
 
 
   function onArrowClick(e: HTMLElementEvent<HTMLButtonElement> & React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
-    console.debug('ev.target', e.target.dataset['ix'])
     switch (e.target.dataset.arrrow) {
       case 'left':
         if (canPageLeft()) {
