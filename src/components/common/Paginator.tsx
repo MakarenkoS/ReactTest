@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 type PropsType = {
   portionCount: number
   portionSize: number
@@ -41,6 +40,7 @@ export const Paginator: React.FC<PropsType> = ({ portionCount, portionSize, curr
       case 'right':
         if (canPageRight()) {
           setCurrentPage(currentPage + 1)
+          
         }
         break
       default:

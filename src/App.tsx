@@ -1,10 +1,10 @@
-import './App.css';
-import 'materialize-css'
-import { useRoutes } from './Routes';
-import { Navbar } from './components/Navbar/Navbar';
+import 'materialize-css';
+import React from 'react';
 import { useSelector } from 'react-redux';
+import './App.css';
+import { Navbar } from './components/Navbar/Navbar';
 import { AppStateType } from './Redux/store';
-import React from 'react'
+import { useRoutes } from './Routes';
 
 export const App = () => {
   const isAuth = useSelector( (state: AppStateType) => state.auth.isAuth)

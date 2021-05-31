@@ -5,7 +5,8 @@ import { JsonDataType } from './types'
 let state = {
   jsonArray: [] as Array<JsonDataType>,
   portionSize: 5,
-  portionCount: 15
+  portionCount: 15,
+  filter: ''
 }
 
 test('new data array item should be added', () => {
