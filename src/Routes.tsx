@@ -2,8 +2,8 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import {LoginPage} from './components/Pages/Login/LoginPage'
 import { JsonPage } from './components/Pages/Json/JsonPage';
 import React from 'react';
-import { Other } from './components/Pages/typescript/Other';
-
+import { Other } from './components/Pages/Other/Other';
+import { Courses } from './components/Pages/Courses/CoursesPage';
 
 
 export const useRoutes = (isAuth: boolean ) => {
@@ -12,7 +12,7 @@ export const useRoutes = (isAuth: boolean ) => {
     return (
       <Switch>
         <Route path='/Json'><JsonPage/> </Route>
-        <Route path='/Courses'><div>Courses</div></Route>
+        <Route path='/Courses'><div><Courses/></div></Route>
         <Route path='/Other'><div><Other /></div></Route>
         <Redirect to="/Courses"/>
       </Switch>

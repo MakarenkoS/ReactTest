@@ -38,6 +38,7 @@ export const jsonPageReducer = (state = initialState, action: ActionTypes): Init
 export const getPosts =  ():ThunkType => {
   return async (dispatch, getState) => {
     const data: Array<JsonDataType>= await postApi.getPosts(getState().jsonPage.portionCount)
+    console.log(data)
     dispatch(jsonPageActions.setData(data))
   }
 }

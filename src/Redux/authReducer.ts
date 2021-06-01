@@ -1,6 +1,6 @@
-import { BaseThunkType, InferActionsTypes } from "./store"
-import { AuthDataType, CLEAR_FILTER, USER_LOGIN, USER_LOGOUT } from "./types"
 import { authActions } from "./actions"
+import { BaseThunkType, InferActionsTypes } from "./store"
+import { AuthDataType, USER_LOGIN, USER_LOGOUT } from "./types"
 
 
 export const initialState = {
