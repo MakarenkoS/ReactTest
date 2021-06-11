@@ -7,6 +7,9 @@ export const CLEAR_FILTER = 'jsonPage/CLEAR_FILTER'
 
 export const SET_COURSES = 'coursesPage/SET_COURSES'
 export const SET_COURSES_DATE = 'coursesPage/SET_COURSES_DATE'
+export const CLEAR_COURSES = 'coursesPage/CLEAR_COURSES'
+export const SET_IS_FETCHING = 'coursesPage/SET_IS_FETCHING'
+
 
 export type AuthDataType = {
   name: string
@@ -31,3 +34,14 @@ interface Valute  {
 export interface Valutes {
   [key: string]: Valute
 }
+
+export const dateOptions:any = {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  weekday: "long",
+  timezone: "UTC+3",
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric",
+};

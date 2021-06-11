@@ -22,11 +22,10 @@ const coursesInstance = axios.create({
 })
 
 export const coursesApi = {
-  async getCourses() {
+  async getCourses(selectedDate) {
     try {
-      const response = await coursesInstance.get('daily_json.js')
-      // https://www.cbr-xml-daily.ru/archive/2021/05/21/daily_json.js
-      return response.data
+      const response = await coursesInstance.get(selectedDate + '/daily_json.js')
+        return response.data
     } catch {
       console.log('Some error')
     }

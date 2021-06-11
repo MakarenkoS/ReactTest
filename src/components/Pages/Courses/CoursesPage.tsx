@@ -1,17 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourses } from "../../../Redux/coursesPageReducer";
 import { AppStateType } from "../../../Redux/store";
 import { Valutes } from "../../../Redux/types";
-import { CoursePageItem } from "./CoursePageItem";
+import { Preloader } from "../../common/Preloader";
+import { buildDateString } from "../../common/utils";
+import { CoursePageCalendar } from "./CoursePageCalendar";
+import { CoursePageExchange } from "./CoursePageExchange";
+import { CoursePageTable } from "./CoursePageTable";
+import styles from "./CoursesPage.module.css";
 
 export const Courses = () => {
   const dispatch = useDispatch();
-
-  async function getCurrentCourses() {
-    dispatch(getCourses());
-  }
-
+  const [selectedDate, setSelectedDate] = useState(""); // выбранная дата
   const valutes: Valutes = useSelector(
     (state: AppStateType) => state.coursesPage.valutes
   );
@@ -19,74 +20,60 @@ export const Courses = () => {
     (state: AppStateType) => state.coursesPage.date
   );
 
+  const isFetching = useSelector(
+    (state: AppStateType) => state.coursesPage.isFetching
+  );
+
+  //Получение данных с сервера с заданной датой
+  const getCurrentCourses = () => {
+    selectedDate !== ""
+      ? dispatch(getCourses(buildDateString(selectedDate)))
+      : dispatch(getCourses());
+  }
+
   useEffect(() => {
-    console.log(valutes);
-  }, [valutes]);
+    getCurrentCourses();
+  }, [selectedDate]);
 
+  const valuteKeys = Object.keys(valutes);
 
-  
-const dateOptions:any = {
-  era: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-  weekday: 'long',
-  timezone: 'UTC+3',
-  hour: 'numeric',
-  minute: 'numeric',
-  second: 'numeric'
-};
+  let renderView;
+  if (isFetching) {
+    renderView = <Preloader />
 
-  const keys = Object.keys(valutes);
-  const formatDate:any = new Date(Date.parse(date)).toLocaleString("ru", dateOptions)
-   
-  if (keys.length > 0) {
-    return (
+  } else if (valuteKeys.length > 0) {
+    renderView = 
       <>
-        <h4>Курс валют</h4>
-        <p>
-          На дату: <strong>{formatDate}</strong>
-      
-        </p>
-        <table className="striped">
-          <thead>
-            <tr>
-              <th>Тикер</th>
-              <th>Номинал</th>
-              <th>Наименование</th>
-              <th>Рублей</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {keys.map((i) => {
-              // return <li> {valutes[i].Name}  {valutes[i].Value} key={Date.now()}</li>
-              return (
-                <CoursePageItem
-                  name={valutes[i].Name}
-                  value={valutes[i].Value}
-                  ticker={valutes[i].CharCode}
-                  nominal={valutes[i].Nominal}
-                  previousValue={valutes[i].Previous}
-                  key={valutes[i].ID}
-                />
-              );
-            })}
-          </tbody>
-        </table>
-
-        <button className="btn" onClick={getCurrentCourses}>
-          Get Courses
-        </button>
+        <CoursePageCalendar
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+          date={date}
+        />
+        <CoursePageExchange
+          valutes={valutes}
+          valuteKeys={valuteKeys}
+          selectedDate={selectedDate}
+        />
+        <CoursePageTable valuteKeys={valuteKeys} valutes={valutes} />
       </>
-    );
-  } else
-    return (
+    
+  } else {
+    renderView = 
       <>
-        <h4>Курс валют</h4>
-        <button className="btn" onClick={getCurrentCourses}>
-          Get Courses
-        </button>
+        <CoursePageCalendar
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+          date={date}
+        />
+
+        <div className={styles.nodataText}>На выбранную дату нет данных</div>
       </>
-    );
+    
+  }
+  return (
+    <>
+      <h4>Курс валют</h4>
+      {renderView}
+    </>
+  );
 };

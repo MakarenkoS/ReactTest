@@ -1,4 +1,5 @@
 import React from "react";
+import { ArrowIcon } from "../../common/utils";
 
 type PropsType = {
   name: string;
@@ -8,18 +9,7 @@ type PropsType = {
   previousValue: number
 };
 
-const ArrowIcon: React.FC<{diff: number}> = ({ diff }) => {
-  if(diff < 0) {
-    return <>
-       <i className="material-icons red-text">arrow_drop_up</i> 
-    </>
-  }
-  return <>
-  <i className="material-icons green-text">arrow_drop_down</i> 
-  </>
-}
-
-export const CoursePageItem: React.FC<PropsType> = ({
+export const CoursePageTableItem: React.FC<PropsType> = ({
   name,
   value,
   ticker,
@@ -34,7 +24,7 @@ export const CoursePageItem: React.FC<PropsType> = ({
       <td> {nominal} </td>
       <td> {name} </td>
       <td> <b> {(value).toFixed(2)} </b> </td>
-      <td> {(value - previousValue).toFixed(2)}</td>
+      <td> {(previousValue - value).toFixed(2)}</td>
       <td><ArrowIcon diff={diff}/></td>
     </tr>
   )
