@@ -16,6 +16,10 @@ export const Paginator: React.FC<PropsType> = ({ portionCount, portionSize, curr
   let cn
   const totalPageCount = Math.ceil(portionCount / portionSize)
   let pages = []
+  console.log('portion count', portionCount)
+  console.log('portion size', portionSize)
+  console.log('total page', totalPageCount)
+  
 
   for (let i = 1; i <= totalPageCount; i++) {
     pages.push(i)

@@ -21,11 +21,12 @@ export const JsonPage: React.FC<PropTypes> = React.memo(() => {
   const filterString = useSelector(
     (state: AppStateType) => state.jsonPage.filter
   );
-  
-  let count: number = 1;
+  console.log('posts', posts.length)
+  let count:number = 0;
 
   useEffect(() => {
     dispatch(getPosts());
+    count = posts.length
   }, [dispatch]);
 
   useEffect( () => {
@@ -75,7 +76,7 @@ export const JsonPage: React.FC<PropTypes> = React.memo(() => {
           return p.title.includes(filterString)
         }) 
         .map((p) => {
-          return { userId: p.id, id: count++, title: p.title };
+          return { userId: p.id, id: ++count, title: p.title };
         })
         .filter(
           (p) =>
