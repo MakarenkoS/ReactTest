@@ -23,6 +23,7 @@ export const Navbar:React.FC<PropsType> = () => {
         <ul id="nav-mobile" className="left hide-on-med-and-down">
           <li><NavLink to="/Json"> Get JSON </NavLink></li>
           <li><NavLink to="/Courses">Get Courses </NavLink></li>
+          <li><NavLink to="/Byte2Float">Byte2Float </NavLink></li>
           <li><NavLink to="/Other">Other </NavLink></li>
         </ul>
       </div>

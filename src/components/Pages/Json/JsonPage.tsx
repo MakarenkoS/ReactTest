@@ -21,7 +21,7 @@ export const JsonPage: React.FC<PropTypes> = React.memo(() => {
   const filterString = useSelector(
     (state: AppStateType) => state.jsonPage.filter
   );
-  console.log('posts', posts.length)
+
   let count:number = 0;
 
   useEffect(() => {

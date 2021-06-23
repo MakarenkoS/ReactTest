@@ -44,13 +44,10 @@ export const Paginator: React.FC<PropsType> = ({ portionCount, portionSize, curr
       case 'right':
         if (canPageRight()) {
           setCurrentPage(currentPage + 1)
-          
         }
         break
       default:
-
     }
-
   }
 
   return (

@@ -35,7 +35,20 @@ export interface Valutes {
   [key: string]: Valute
 }
 
-export const dateOptions:any = {
+interface dateOptionsInterface {
+  year: "numeric" | "2-digit" | undefined
+  month: "numeric" | "2-digit" | "long" | "short" | "narrow" | undefined
+  day: "numeric" | "2-digit" | undefined
+  weekday:  "long" | "short" | "narrow" | undefined
+  timezone: string
+  hour: "numeric" | "2-digit" | undefined
+  minute: "numeric" | "2-digit" | undefined
+  second: "numeric" | "2-digit" | undefined
+
+}
+
+
+export const dateOptions: dateOptionsInterface = {
   year: "numeric",
   month: "long",
   day: "numeric",
