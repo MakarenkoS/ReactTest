@@ -5,6 +5,11 @@ export const ByteToFloat = () => {
   const buffer = new ArrayBuffer(4);
   const f32 = new Float32Array(buffer);
   const ui8 = new Uint8Array(buffer);
+
+  interface BytesInterface {
+    [key: string]: string
+  }
+  
  
   const [byteArray, setByteArray] = useState({
     'first_byte': '',
@@ -39,7 +44,7 @@ export const ByteToFloat = () => {
     })
   }
 
-  function calculateFloat(byteArray: any) {
+  function calculateFloat(byteArray: BytesInterface) {
     Object.keys(byteArray).forEach( (item, i) => {
       ui8[i] =  parseInt(byteArray[item], 16)
     })

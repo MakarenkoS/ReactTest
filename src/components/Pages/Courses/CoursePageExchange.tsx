@@ -17,16 +17,18 @@ export const CoursePageExchange: React.FC<PropsType> = ({
   const [selectedValute, setSelectedValute] = useState(""); // выбор валюты
   const [valutesCourse, setValutesCourse] = useState({ course: 0, nominal: 1 });
 
-  const onSelectValuteChange = (e: any) => {
+  const onSelectValuteChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedValute(e.target.value);
-    const key: any = valuteKeys.find((i) => valutes[i].Name === e.target.value);
-    setValutesCourse({
-      course: valutes[key].Value,
-      nominal: valutes[key].Nominal,
-    });
+    const key: string | undefined = valuteKeys.find((i) => valutes[i].Name === e.target.value);
+    if (key) {
+      setValutesCourse({
+        course: valutes[key].Value,
+        nominal: valutes[key].Nominal,
+      });
+    }
   };
 
-  const onRublesUpdate = (e: any) => {
+  const onRublesUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRublesAmount(e.target.value);
   };
 
