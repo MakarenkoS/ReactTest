@@ -1,4 +1,4 @@
-import { SET_DATA, USER_LOGIN, USER_LOGOUT, JsonDataType, SET_FILTER, CLEAR_FILTER, SET_COURSES, SET_COURSES_DATE, CLEAR_COURSES, SET_IS_FETCHING } from "./types"
+import { SET_DATA, USER_LOGIN, USER_LOGOUT, JsonDataType, SET_FILTER, CLEAR_FILTER, SET_COURSES, SET_COURSES_DATE, CLEAR_COURSES, SET_IS_FETCHING, DELETE_ITEM, SET_IS_FETCHING__JSON } from "./types"
 
 export const authActions = {
   logout: () => ({ type: USER_LOGOUT } as const),
@@ -8,7 +8,9 @@ export const authActions = {
 export const jsonPageActions = {
   setData: (data:  Array<JsonDataType>) => ({ type: SET_DATA, payload: data } as const),
   setFilter: (filter: string) => ({type: SET_FILTER, filterString: filter} as const ),
-  clearFilter: () => ({type: CLEAR_FILTER}) as const
+  clearFilter: () => ({type: CLEAR_FILTER}) as const,
+  setIsFetching: (isFetching: boolean) => ({ type: SET_IS_FETCHING__JSON, isFetching} as const),
+  deleteItem: (id: number) => ({type: DELETE_ITEM, id} as const )
 }
 
 export const coursesPageActions = {

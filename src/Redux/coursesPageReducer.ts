@@ -33,8 +33,6 @@ export const coursesPageReducer = (state = initialState, action: ActionTypes): I
       console.log('isFetch')
       return {...state, isFetching: action.isFetching}
     }
-
-
     default: 
       return {...state}
   }
@@ -46,7 +44,6 @@ export const coursesPageReducer = (state = initialState, action: ActionTypes): I
 
 export const getCourses =  (selectedDate:string = ''):ThunkType => {
   return async (dispatch, getState) => {
-   
     const data = await coursesApi.getCourses(selectedDate)
     dispatch(coursesPageActions.setIsFetching(true))
     if(!!data) {

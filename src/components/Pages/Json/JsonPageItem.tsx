@@ -1,11 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { jsonPageActions } from "../../../Redux/actions";
 import { AppStateType } from "../../../Redux/store";
 import classes from "./JsonPage.module.css";
 
+
 type PropsType = {
-  id: number;
-  title: string;
+  id: number
+  idNumber: number
+  title: string
 };
 
 let highlightStyle = {
@@ -40,19 +43,26 @@ const TitleRender: React.FC<{ title: string }> = ({ title }): any => {
   return <>{title}</>;
 };
 
-export const JsonPageItem: React.FC<PropsType> = ({ id, title }) => {
+export const JsonPageItem: React.FC<PropsType> = ({ id, idNumber, title }) => {
+
+  const dispatch = useDispatch();
+
+  const deleteJsonItem = (id: number) => {
+    dispatch(jsonPageActions.deleteItem(id))
+  }
+
   return (
     <p className={classes.item}>
       <label className={classes.checkbox}>
         <input type="checkbox" />
         <span>
-          <strong>{id} </strong>
+          <strong>{idNumber} </strong>
           <TitleRender title={title} />
         </span>
       </label>
 
-      <button className="waves-effect waves-light btn">
-        <i className="material-icons left">cloud</i>button
+      <button className="waves-effect waves-light blue-grey darken-2 btn" onClick={() => deleteJsonItem(id)}>
+        <i className="material-icons">clear</i>
       </button>
     </p>
   );

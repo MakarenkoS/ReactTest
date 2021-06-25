@@ -22,19 +22,32 @@ export const JsonPage: React.FC<PropTypes> = React.memo(() => {
     (state: AppStateType) => state.jsonPage.filter
   );
 
+  const isFetching = useSelector(
+    (state: AppStateType) => state.jsonPage.isFetching
+  )
+
   let count:number = 0;
 
   useEffect(() => {
     dispatch(getPosts());
     count = posts.length
+
   }, [dispatch]);
 
   useEffect( () => {
     setCurrentPage(1)
-  }, [filterString])
+    console.log(posts.length)
+  }, [filterString, posts.length ])
+
+
 
   if (posts.length === 0) {
-    return <Preloader />;
+    if (isFetching) {
+      return <Preloader />
+    }
+    return (
+    <h3>No data</h3>
+    )
   }
 
   const setFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,10 +58,9 @@ export const JsonPage: React.FC<PropTypes> = React.memo(() => {
     dispatch(jsonPageActions.clearFilter())
   }
   let newPosts =  posts.filter((p) => {
-   
     return p.title.includes(filterString)
   }) 
-  console.log(newPosts)
+
   return (
     <div>
       <nav>
@@ -84,7 +96,8 @@ export const JsonPage: React.FC<PropTypes> = React.memo(() => {
             p.id >= (currentPage - 1) * portionSize + 1
         )
         .map((p) => (
-          <JsonPageItem key={p.id} id={p.id} title={p.title} />
+    
+            <JsonPageItem key={p.id} id={p.userId} idNumber={p.id} title={p.title} />
         ))}
 
       <Paginator
