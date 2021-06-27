@@ -14,12 +14,8 @@ type HTMLElementEvent<T extends HTMLElement> = Event & {
 
 export const Paginator: React.FC<PropsType> = ({ portionCount, portionSize, currentPage, setCurrentPage }) => {
   let cn
-  const totalPageCount = Math.ceil(portionCount / portionSize)
   let pages = []
-  console.log('portion count', portionCount)
-  console.log('portion size', portionSize)
-  console.log('total page', totalPageCount)
-  
+  const totalPageCount = Math.ceil(portionCount / portionSize)
 
   for (let i = 1; i <= totalPageCount; i++) {
     pages.push(i)

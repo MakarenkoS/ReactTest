@@ -30,7 +30,7 @@ export const CoursePageCalendar:React.FC<PropsType> = ({selectedDate, setSelecte
               className="validate"
               name="dataStart"
               value={selectedDate}
-              onChange={(e: any) => setSelectedDate(e.currentTarget.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedDate(e.currentTarget.value)}
             />
             <label htmlFor="dateStart">Дата</label>
           </div>

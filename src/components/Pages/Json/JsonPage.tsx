@@ -12,9 +12,9 @@ type PropTypes = {};
 
 export const JsonPage: React.FC<PropTypes> = React.memo(() => {
   const dispatch = useDispatch();
-  // const setSearchFilter = dispatch(jsonPageActions.setFilter(filter))
   const [currentPage, setCurrentPage] = useState(1);
   let posts = useSelector((state: AppStateType) => state.jsonPage.jsonArray);
+  
   const portionSize = useSelector(
     (state: AppStateType) => state.jsonPage.portionSize
   );
@@ -96,7 +96,6 @@ export const JsonPage: React.FC<PropTypes> = React.memo(() => {
             p.id >= (currentPage - 1) * portionSize + 1
         )
         .map((p) => (
-    
             <JsonPageItem key={p.id} id={p.userId} idNumber={p.id} title={p.title} />
         ))}
 
