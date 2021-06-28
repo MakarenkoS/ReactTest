@@ -17,6 +17,12 @@ export const App = () => {
     var instances = M.Collapsible.init(elems, {})
   })
 
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+     //@ts-ignore
+    var instances = M.Sidenav.init(elems, {});
+  });
+
   //---------------------------------------------------------------------
 
   const isAuth = useSelector( (state: AppStateType) => state.auth.isAuth)

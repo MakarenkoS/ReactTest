@@ -75,10 +75,10 @@ export const ByteToFloat = () => {
 
   return (
     <>
-      <h2 className="center">Перевод byte во float</h2>
+      <h4 className="center">Перевод byte во float</h4>
       <div className="row">
-        <form action="" className="col s7 offset-s4">
-          <div className="col s4">
+        <form action="" className="col s12 m9 offset-m2">
+          <div className="col s6 m6">
             <p>Bytes:</p>
             <input
               placeholder="First byte HEX"
@@ -113,7 +113,7 @@ export const ByteToFloat = () => {
               value = {byteArray["fourth_byte"]}
             ></input>
           </div>
-          <div className="col s4">
+          <div className="col s6">
             <p>Float number: </p>
             <input
               placeholder="Float number"

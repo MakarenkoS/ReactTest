@@ -16,12 +16,12 @@ export const CoursePageCalendar:React.FC<PropsType> = ({selectedDate, setSelecte
 
   return (
     <div className="row">
-          <div className="col s6">
+          <div className="col s10 m12">
             <p>
               На дату: <strong>{formatDate}</strong>
             </p>
           </div>
-          <div className="input-field col s6">
+          <div className="input-field col s10 m6">
             <p>Выберите дату: </p>
             <input
               placeholder=""

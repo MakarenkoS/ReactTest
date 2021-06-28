@@ -59,12 +59,12 @@ export const CoursePageExchange: React.FC<PropsType> = ({
         placeholder="Кол-во рублей"
         value={rublesAmount}
         onChange={onRublesUpdate}
-        className="col s3"
+        className="col s12 m3 offset-m1 l3 offset-l1"
       />
       <select
         value={selectedValute}
         onChange={onSelectValuteChange}
-        className="browser-default col s3"
+        className="browser-default col s12 m4 l4"
       >
         <option>Выберите валюту</option>
         {valuteKeys.map((i) => {
@@ -76,7 +76,7 @@ export const CoursePageExchange: React.FC<PropsType> = ({
           );
         })}
       </select>
-      <input placeholder="" value={valutesAmount} readOnly className="col s3" />
+      <input placeholder="" value={valutesAmount} readOnly className="col s12 l3 m3" />
     </div>
   );
 };
