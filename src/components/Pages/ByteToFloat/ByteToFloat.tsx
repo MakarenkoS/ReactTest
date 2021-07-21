@@ -12,10 +12,10 @@ export const ByteToFloat = () => {
   
  
   const [byteArray, setByteArray] = useState({
-    'first_byte': '',
-    'second_byte': '',
-    'third_byte': '',
-    'fourth_byte': ''
+    'first_byte': '0',
+    'second_byte': '0',
+    'third_byte': '20',
+    'fourth_byte': '41'
   })
   let [floatNumber, setFloatNumber] = useState('')
   let [isFloat, setIsFloat] = useState(false) 
@@ -79,7 +79,7 @@ export const ByteToFloat = () => {
       <div className="row">
         <form action="" className="col s12 m9 offset-m2">
           <div className="col s6 m6">
-            <p>Bytes:</p>
+            <p>Bytes(HEX):</p>
             <input
               placeholder="First byte HEX"
               id="first_byte"

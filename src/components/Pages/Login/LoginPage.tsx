@@ -39,8 +39,9 @@ export let LoginPage = () => {
       <div className="card-content white-text">
 
         <div className="row">
+          
           <div className="input-field col s6">
-            <input id="input_name" type="text" name="name" placeholder="Enter login" data-length="10"
+            <input id="input_name" type="text" name="name" placeholder="Enter login. Type 'test' for test login " data-length="10"
               value={field.name} onChange={changeHandler}
             >
 

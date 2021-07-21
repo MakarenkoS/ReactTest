@@ -31,13 +31,13 @@ export const Navbar: React.FC<PropsType> = () => {
           </a>
           <ul id="nav-mobile" className="left hide-on-med-and-down">
             <li>
-              <NavLink to="/Json"> Get JSON </NavLink>
+              <NavLink to="/Json"> JSON </NavLink>
             </li>
             <li>
-              <NavLink to="/Courses">Get Courses </NavLink>
+              <NavLink to="/Courses">Курсы валют</NavLink>
             </li>
             <li>
-              <NavLink to="/Byte2Float">Byte2Float </NavLink>
+              <NavLink to="/Byte2Float">Перевод во Float</NavLink>
             </li>
             <li>
               <NavLink to="/Other">Other </NavLink>
@@ -47,13 +47,13 @@ export const Navbar: React.FC<PropsType> = () => {
       </nav>
       <ul className="sidenav" id="mobile-demo">
         <li>
-          <NavLink to="/Json"> Get JSON </NavLink>
+          <NavLink to="/Json"> JSON </NavLink>
         </li>
         <li>
-          <NavLink to="/Courses">Get Courses </NavLink>
+          <NavLink to="/Courses">Курсы валют</NavLink>
         </li>
         <li>
-          <NavLink to="/Byte2Float">Byte2Float </NavLink>
+          <NavLink to="/Byte2Float">Перевод во Float</NavLink>
         </li>
         <li>
           <NavLink to="/Other">Other </NavLink>

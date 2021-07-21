@@ -28,7 +28,7 @@ export const authReducer = (state = initialState, action: ActionTypes): InitialS
 
 export const authorizeUser = (data: AuthDataType): ThunkType => {
   return  (dispatch) => {
-    if (data.name === 'I') {
+    if (data.name === 'test') {
       dispatch(authActions.login())
     } else {
       //@ts-ignore
